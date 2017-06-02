@@ -1,6 +1,5 @@
-mongodb
-mongoose
 bcryptjs
+mongoose
 jsonwebtoken
 lodash
 react-router

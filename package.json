@@ -4,7 +4,7 @@
   "description": "a simple chat application",
   "main": "server/server.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack -p",
     "start": "npm run build && node server/server.js"
   },
   "author": "Ali Sawari <ali.dragon.swr@gmail.com>",
@@ -16,6 +16,7 @@
     "babel-preset-react": "^6.24.1",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
+    "mongoose": "^4.10.4",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "socket.io": "^2.0.1",

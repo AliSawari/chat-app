@@ -1,6 +1,14 @@
 import React, {Component} from 'react';
 import Message from './Message';
 var socket = io();
+
+function set(a, b) {
+  localStorage.setItem(a, b);
+}
+function get(a) {
+  return localStorage.getItem(a);
+}
+
 export default class Chat extends Component{
   constructor(props){
     super(props);
@@ -46,22 +54,36 @@ export default class Chat extends Component{
       });
   }
   componentWillMount(){
-    var name = localStorage.getItem('name');
+    var name = get('name');
+    var chatHistory = get('chat-history');
     if (name != undefined) {
       this.setState({ myName: name});
       socket.emit('newUser', name);
     } else {
       var newName = prompt("Your Name : ");
-      localStorage.setItem('name', newName);
+      set('name', newName);
       this.setState({ myName: newName});
       socket.emit('newUser', newName);
     }
+    if (chatHistory) {
+      var data = JSON.parse(chatHistory);
+      this.setState({
+        messages: data
+      });
+    }
   }
+  componentDidUpdate(){
+    var {messages} = this.state;
+    var strData = JSON.stringify(messages, undefined, 2);
+    set('chat-history', strData);
+  }
+
   statusColor(){
     var {status} = this.state;
   return status === 'Connected' ? {color: 'green'} : {color: 'red'}
 }
-  message(){
+  message(event){
+    event.preventDefault();
     var {myName} = this.state;
     var text = this.refs.inp.value;
     this.refs.inp.value = '';
@@ -92,13 +114,15 @@ export default class Chat extends Component{
       <h3 className="well well-lg">Status : <span style={this.statusColor()}>{status}</span></h3>
       <Message messages={messages}/>
       <div className="row">
+        <form onSubmit={this.message}>
         <div className="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-          <input ref="inp" type="text"
+          <input autoFocus ref="inp" type="text"
             className="form-control" placeholder="message"/>
         </div>
         <div className="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-          <button onClick={this.message} className="btn btn-success">Send</button>
+          <button className="btn btn-success">Send</button>
         </div>
+      </form>
       </div>
       </div>
     );

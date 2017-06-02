@@ -18,6 +18,9 @@ io.on('connection' , (socket) => {
   socket.on('newUser', (name) => {
     socket.broadcast.emit('wel', name);
   });
+
+
+
 });
 
 
