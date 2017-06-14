@@ -15,6 +15,10 @@ export default class Chat extends Component{
     this.state = {
       status: undefined,
       myName: undefined,
+      isTyping: {
+        typing: false,
+        typer: undefined
+      },
       messages: [
         {
           from: "Admin",
@@ -24,6 +28,9 @@ export default class Chat extends Component{
     }
     this.statusColor = this.statusColor.bind(this);
     this.message = this.message.bind(this);
+    this.typeCheck = this.typeCheck.bind(this);
+    this.isTyping = this.isTyping.bind(this);
+
       socket.on('connect', () => {
         this.setState({ status: 'Connected' });
       });
@@ -52,6 +59,14 @@ export default class Chat extends Component{
           ]
         });
       });
+      socket.on('isTyping', (name) => {
+        this.setState({
+          isTyping: {
+            typing: true,
+            typer: name
+          }
+        });
+      });
   }
   componentWillMount(){
     var name = get('name');
@@ -61,9 +76,13 @@ export default class Chat extends Component{
       socket.emit('newUser', name);
     } else {
       var newName = prompt("Your Name : ");
-      set('name', newName);
-      this.setState({ myName: newName});
-      socket.emit('newUser', newName);
+      if (newName != null) {
+        set('name', newName);
+        this.setState({ myName: newName});
+        socket.emit('newUser', newName);
+      } else {
+        window.location = '/err';
+      }
     }
     if (chatHistory) {
       var data = JSON.parse(chatHistory);
@@ -106,17 +125,55 @@ export default class Chat extends Component{
     }
   }
 
+  typeCheck(){
+    var {isTyping, myName} = this.state;
+    socket.emit('type', myName);
+    var text = this.refs.inp.value;
+    setInterval(() => {
+      if (this.refs.inp.value === text){
+        this.setState({
+          isTyping: {
+            typing: false
+          }
+        });
+      }
+    },2000);
+  }
+
+  typeStyle(){
+    return {
+        position: "fixed",
+        top:"0",
+        left: "40%",
+        fontSize: '16px',
+        padding: '10px',
+        border: '1px solid',
+        borderRadius: '10px',
+        backgroundColor: 'rgb(54, 181, 244)'
+      }
+  }
+
+isTyping(){
+  var {isTyping} = this.state;
+  if (isTyping.typing){
+    return <h5 style={this.typeStyle()}><b>{isTyping.typer}</b> is Typing...</h5>
+  } else {
+    return;
+  }
+}
+
   render(){
-    var {status, messages} = this.state;
+    var {status, messages, isTyping} = this.state;
     return (
       <div style={this.jumbStyle()} className='jumbotron'>
+        {this.isTyping()}
       <h2>Chat Component</h2>
       <h3 className="well well-lg">Status : <span style={this.statusColor()}>{status}</span></h3>
       <Message messages={messages}/>
       <div className="row">
         <form onSubmit={this.message}>
         <div className="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-          <input autoFocus ref="inp" type="text"
+          <input onKeyUp={this.typeCheck} autoFocus ref="inp" type="text"
             className="form-control" placeholder="message"/>
         </div>
         <div className="col-lg-2 col-md-2 col-sm-2 col-xs-2">

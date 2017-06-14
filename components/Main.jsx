@@ -6,11 +6,12 @@ export default class Main extends Component{
     super(props);
   }
   render(){
-    var {children} = this.props;
     return (
       <div className="container">
+        <isTyping/>
         <h1>Chat Application</h1>
-        {children}
+        <Chat/>
+        <About/>
       </div>
     );
   }

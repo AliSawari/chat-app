@@ -4,7 +4,4 @@ import Main from './Main';
 import About from './About';
 import Chat from './Chat';
 const app = document.getElementById('app');
-ReactDOM.render(<Main>
-  <Chat/>
-  <About/>
-</Main>,app);
+ReactDOM.render(<Main/>,app);
