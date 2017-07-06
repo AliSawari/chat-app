@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import Message from './Message';
 var socket = io();
-
+import Styles from './Styles';
+// import {RaisedButton, AppBar, FloatingActionButton } from 'material-ui';
 function set(a, b) {
   localStorage.setItem(a, b);
 }
@@ -9,7 +10,7 @@ function get(a) {
   return localStorage.getItem(a);
 }
 
-export default class Chat extends Component{
+export default class Chat extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -26,10 +27,10 @@ export default class Chat extends Component{
         }
       ]
     }
-    this.statusColor = this.statusColor.bind(this);
     this.message = this.message.bind(this);
     this.typeCheck = this.typeCheck.bind(this);
     this.isTyping = this.isTyping.bind(this);
+    this.file = this.file.bind(this);
 
       socket.on('connect', () => {
         this.setState({ status: 'Connected' });
@@ -38,6 +39,19 @@ export default class Chat extends Component{
         this.setState({ status: 'Disconnected' });
       });
       socket.on('msg', (msg) => {
+        if(msg.image && (msg.src != undefined) ) {
+          this.setState({
+            messages: [
+            ...this.state.messages,
+            {
+              from: msg.from,
+              image: true,
+              src: msg.src
+            }
+          ]
+        });
+        } else {
+          if(msg.text && (msg.text != undefined) ){
         this.setState({
           messages: [
             ...this.state.messages,
@@ -47,7 +61,9 @@ export default class Chat extends Component{
             }
           ]
         });
-      });
+       }
+      }
+    });
       socket.on('wel', (name) => {
         this.setState({
           messages: [
@@ -65,6 +81,12 @@ export default class Chat extends Component{
             typing: true,
             typer: name
           }
+        });
+      });
+      socket.on('done', () => {
+        socket.emit('newMsg', {
+          from: this.state.myName,
+          image: true
         });
       });
   }
@@ -97,10 +119,6 @@ export default class Chat extends Component{
     set('chat-history', strData);
   }
 
-  statusColor(){
-    var {status} = this.state;
-  return status === 'Connected' ? {color: 'green'} : {color: 'red'}
-}
   message(event){
     event.preventDefault();
     var {myName} = this.state;
@@ -118,19 +136,12 @@ export default class Chat extends Component{
     }
   }
 
-  jumbStyle(){
-    return {
-      border: '2px solid orange',
-      boxShadow: '30px 30px 15px gray'
-    }
-  }
-
   typeCheck(){
     var {isTyping, myName} = this.state;
     socket.emit('type', myName);
     var text = this.refs.inp.value;
     setInterval(() => {
-      if (this.refs.inp.value === text){
+      if(this.refs.inp.value === text){
         this.setState({
           isTyping: {
             typing: false
@@ -140,46 +151,58 @@ export default class Chat extends Component{
     },2000);
   }
 
-  typeStyle(){
-    return {
-        position: "fixed",
-        top:"0",
-        left: "40%",
-        fontSize: '16px',
-        padding: '10px',
-        border: '1px solid',
-        borderRadius: '10px',
-        backgroundColor: 'rgb(54, 181, 244)'
-      }
-  }
 
 isTyping(){
   var {isTyping} = this.state;
   if (isTyping.typing){
-    return <h5 style={this.typeStyle()}><b>{isTyping.typer}</b> is Typing...</h5>
+    return (
+      <h5 style={Styles.typeStyle()}>
+      <b>{isTyping.typer}</b> is Typing...
+      <i style={{fontSize:'18px'}} className="fa fa-spinner"></i>
+      </h5>
+    );
   } else {
     return;
+  }
+}
+
+file(){
+  var fileForm = this.refs.fileForm;
+  var fileInput = this.refs.fileInput;
+  fileInput.click();
+  fileInput.onchange = () => {
+    fileForm.submit();
   }
 }
 
   render(){
     var {status, messages, isTyping} = this.state;
     return (
-      <div style={this.jumbStyle()} className='jumbotron'>
+      <div style={Styles.jumbStyle()} className='jumbotron'>
         {this.isTyping()}
       <h2>Chat Component</h2>
-      <h3 className="well well-lg">Status : <span style={this.statusColor()}>{status}</span></h3>
+      <h3 className="well well-lg">Status : <span style={Styles.statusColor(status)}>{status}</span></h3>
       <Message messages={messages}/>
       <div className="row">
         <form onSubmit={this.message}>
-        <div className="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+        <div className="col-lg-8 col-md-8 col-sm-8 col-xs-8">
           <input onKeyUp={this.typeCheck} autoFocus ref="inp" type="text"
             className="form-control" placeholder="message"/>
         </div>
         <div className="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-          <button className="btn btn-success">Send</button>
+          <button className="btn btn-success">
+            <i style={{fontSize:'25px'}} className="fa fa-paper-plane"></i>
+            </button>
         </div>
       </form>
+        <form encType="multipart/form-data" ref="fileForm" action="/file" method="post">
+            <input type="file" name="file" ref="fileInput" style={{display:'none'}}></input>
+        </form>
+        <div className="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+          <button onClick={this.file} className="btn btn-success">
+            <i style={{fontSize:'25px'}} className="fa fa-file"></i>
+        </button>
+        </div>
       </div>
       </div>
     );

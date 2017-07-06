@@ -1,20 +1,20 @@
 import React, {Component} from 'react';
+import Styles from './Styles';
 export default class Message extends Component {
   constructor(props) {
     super(props);
     this.msg = this.msg.bind(this);
   }
-  msgStyle() {
-    return {
-      border: '1px solid black',
-      borderRadius: '10px',
-      backgroundColor: '#fff1b8'
-    }
-  }
   msg(){
     var {messages} = this.props;
     return messages.map((msg, key) => {
-      return <h5 key={key} style={this.msgStyle()} className="well"><b>{msg.from}</b>: {msg.text}</h5>
+      if(msg.image){
+        return <div className="well" key={key} style={Styles.msgStyle()}><b>{msg.from}</b>:
+          <img style={Styles.imgStyle()} src={msg.src}/>
+        </div>
+      } else {
+      return <h5 key={key} style={Styles.msgStyle()} className="well"><b>{msg.from}</b>: {msg.text}</h5>
+    }
     });
   }
   render(){
