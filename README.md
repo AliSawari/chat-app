@@ -1,28 +1,33 @@
-# Chat App
+# Chat App :sunglasses:
 
-### a simple React-Socket_Node Chat room application  :stuck_out_tongue:
+#### a simple React-Socket-Nodejs Chat room application  :stuck_out_tongue:
 
-## Usage :
-```
-npm install
-npm start
-```
+## Requirements
 
-### Warning : npm start uses webpack -p which minifies the bundle file
-### and that might take more time if you want to start without minfing
-### try this :
+#### * [Nodejs](_blank:https://nodejs.org)
+#### * [Webpack](_blank:https://webpack.js.org/)
+
+## Usage
 ```
-$ webpack
-$ node server/server.js
+#### npm install
+#### npm start
 ```
 
-### I will design properly it soon! :smiley:
+#### Warning : npm start uses webpack -p which minifies the bundle file
+#### and that might take more time if you want to start without minfing
+#### try this :
+```
+#### $ webpack
+#### $ node server/server.js
+```
+
+#### I will design it properly soon later! :smiley:
 
 
 ## Live Demo
-### [Medoos-Chat](https://medoos-chat.herokuapp.com/) synced with this github rep
+### [Medoos-Chat](https://medoos-chat.herokuapp.com/) synced with this github repository
 
 ## Reach Me
-* [Twitter](https://twitter.com/ali_sawari24)
-* [Facebook](https://www.facebook.com/ali.sawari.3726)
-* [Telegram](https://t.me/mrghost0)
+#### * [Twitter](_blank:https://twitter.com/ali_sawari24)
+#### * [Facebook](_blank:https://www.facebook.com/ali.sawari.3726)
+#### * [Telegram](_blank:https://t.me/mrghost0)
