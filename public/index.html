@@ -12,6 +12,18 @@
   <body>
     <div id="app"></div>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="bundle.js"></script>
+    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+    <script>
+    var pusher = new Pusher('91d67e6e341c6538e28c', {
+      cluster: 'ap2',
+      encrypted: true
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(data) {
+      alert(data.message);
+    });
+    </script>
+    <script src="bundle.js"></script>  
   </body>
 </html>

@@ -7,12 +7,27 @@ const http = require('http');
 const fs = require('fs');
 const server = http.createServer(app);
 const io = socketIO(server);
+const Pusher = require('pusher');
 const path = require('path');
 const public = path.join(__dirname,'../public');
 const formidable = require('formidable');
 app.use(express.static(public));
 app.use(parser.json());
 var temp_address;
+
+
+// var pusher = new Pusher({
+//   appId: '364872',
+//   key: '91d67e6e341c6538e28c',
+//   secret: '2f366e969dbe03ea7018',
+//   cluster: 'ap2',
+//   encrypted: true
+// });
+//
+// pusher.trigger('my-channel', 'my-event', {
+//   "message": "hello world"
+// });
+
 
 
 app.get('/err', (req, res) => {
