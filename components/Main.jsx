@@ -11,7 +11,6 @@ export default class Main extends Component{
   render(){
     return (
       <div className="container">
-        <isTyping/>
         <h1>Chat Application</h1>
         <Chat/>
         <About/>

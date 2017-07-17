@@ -26,7 +26,7 @@ $ node server/server.js
 
 ## Live Demo
 ### [Medoos-Chat](https://medoos-chat.herokuapp.com/)
-#### synced with this github repository
+#### synced with [this github repository](https://github.com/AliSawari/chat-app)
 
 ## Reach Me
 * [Twitter](https://twitter.com/ali_sawari24)
