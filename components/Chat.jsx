@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Message from './Message';
-var socket = io();
 import Styles from './Styles';
+var socket = io();
 // import {RaisedButton, AppBar, FloatingActionButton } from 'material-ui';
 function set(a, b) {
   localStorage.setItem(a, b);
@@ -34,6 +34,7 @@ export default class Chat extends Component {
 
       socket.on('connect', () => {
         this.setState({ status: 'Connected' });
+        socket.emit('in', this.state.myName);
       });
       socket.on('disconnect', () => {
         this.setState({ status: 'Disconnected' });
@@ -82,6 +83,13 @@ export default class Chat extends Component {
             typer: name
           }
         });
+        setTimeout(() => {
+          this.setState({
+            isTyping: {
+              typing: false
+            }
+          });
+        },3000);
       });
       socket.on('done', () => {
         socket.emit('newMsg', {
@@ -140,15 +148,13 @@ export default class Chat extends Component {
     var {isTyping, myName} = this.state;
     socket.emit('type', myName);
     var text = this.refs.inp.value;
-    setInterval(() => {
-      if(this.refs.inp.value === text){
-        this.setState({
-          isTyping: {
-            typing: false
-          }
-        });
-      }
-    },2000);
+    setTimeout(() => {
+      this.setState({
+        isTyping: {
+          typing: false
+        }
+      });
+    },1000);
   }
 
 
@@ -200,7 +206,7 @@ file(){
         </form>
         <div className="col-lg-2 col-md-2 col-sm-2 col-xs-2">
           <button onClick={this.file} className="btn btn-success">
-            <i style={{fontSize:'25px'}} className="fa fa-file"></i>
+            <i style={{fontSize:'25px'}} className="fa fa-picture-o"></i>
         </button>
         </div>
       </div>

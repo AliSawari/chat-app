@@ -36,6 +36,25 @@ var Styles = {
 				border: '2px solid',
 				borderRadius: '20px'
 			}
+		},
+		p:() => {
+			return {
+				margin: '0px 5px 0px 5px',
+				padding: '10px',
+				border: '2px solid #1bd9df',
+				borderRadius: '10px',
+				display: 'inline'
+			}
+		},
+		p2:() => {
+			return {
+				border: '1px solid #8fff78',
+				backgroundColor: '#8fff78',
+				width: '200px',
+				padding: '15px',
+				borderRadius: '15px',
+				marginBottom: '20px'
+			}
 		}
 }
 

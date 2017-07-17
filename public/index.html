@@ -3,27 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#398dda">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <title>Chat App</title>
+    <title>Medoos Chat</title>
   </head>
   <body>
     <div id="app"></div>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
-    <script>
-    var pusher = new Pusher('91d67e6e341c6538e28c', {
-      cluster: 'ap2',
-      encrypted: true
-    });
-
-    var channel = pusher.subscribe('my-channel');
-    channel.bind('my-event', function(data) {
-      alert(data.message);
-    });
-    </script>
-    <script src="bundle.js"></script>  
+    <script src="bundle.js"></script>
   </body>
 </html>
