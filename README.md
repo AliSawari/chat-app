@@ -1,4 +1,4 @@
-# Chat App :sunglasses:
+# Chat App :speech_balloon: :sunglasses:
 
 #### a simple React-Socket-Nodejs Chat room application  :stuck_out_tongue:
 
@@ -26,7 +26,7 @@ $ node server/server.js
 
 ## Live Demo
 ### [Medoos-Chat](https://medoos-chat.herokuapp.com/)
-#### synced with [this github repository](https://github.com/AliSawari/chat-app)
+#### synced with [this github repository](https://github.com/AliSawari/chat-app) :octocat:
 
 ## Reach Me
 * [Twitter](https://twitter.com/ali_sawari24)
