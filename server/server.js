@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
-const parser = require('body-parser');
 const socketIO = require('socket.io');
 const http = require('http');
 const fs = require('fs');
@@ -11,28 +10,31 @@ const path = require('path');
 const public = path.join(__dirname,'../public');
 const formidable = require('formidable');
 app.use(express.static(public));
-app.use(parser.json());
-var temp_address;
+var temp = undefined;
 var online_people = [];
 
-function add(name){
+function isThere(name){
   let s;
   for(let x in online_people){
     if(online_people[x] === name){
-      return s = true;
+      return s = [x];
     } else {
       s = false;
     }
   }
+  return s;
+}
+
+function add(name){
+  let s = isThere(name);
   if(!s){
     online_people.push(name);
   }
 }
 function rem(name){
-  for(let x in online_people){
-    if(online_people[x] === name){
-      online_people.splice(x,1);
-    }
+  let s = isThere(name);
+  if(s){
+    online_people.splice(s[0],1);
   }
 }
 
@@ -43,39 +45,34 @@ app.get('/err', (req, res) => {
 });
 
 app.post('/file', (req, res) => {
+  let r;
   var form = new formidable.IncomingForm();
   form.parse(req, (err, fields, files) => {
     if(err) return res.status(400).send(err);
-    var file_size = files.file.size;
+    // var file_size = files.file.size;
     var file_path = files.file.path;
     var file_name = files.file.name;
-    var new_name = file_name.replace(/(.jpg|.png)/gi,'');
-    var file_ext = file_name.split('.').pop();
-    var t = new Date();
-    var time_format = `-${t.getFullYear()}-${t.getMonth()}-${t.getDate()}-${t.getHours()}_${t.getMinutes()}`;
-    var new_path = public + `/uploads/${new_name}${time_format}.${file_ext}`;
+    // var new_name = file_name.replace(/(.jpg|.png)/gi,'');
+    var file_ext = file_name.split('.').pop().toLowerCase();
+    // var t = new Date();
+    // var time_format = `-${t.getFullYear()}-${t.getMonth()}-${t.getDate()}-${t.getHours()}_${t.getMinutes()}`;
     if(!file_name) return res.status(400).send("<h1>400 Bad Request</h1><h2>No file recieved</h2>");
     fs.readFile(file_path, (err, data) => {
       if(err) return res.status(400).send(err);
-      fs.writeFile(new_path, data, (err) => {
-        if(err) return res.status(400).send(err);
-        var f;
-        if(port === 3000){
-          f = new_path.split('uploads\\').pop();
-        } else {
-          f = new_path.split('uploads/').pop();
+        temp = {
+          src: data.toString('base64'),
+          ext: file_ext
         }
-        temp_address = `/uploads/${f}`;
-        io.on('connection', (socket) => {
-          if(temp_address != undefined){
-            socket.emit('done');
-          }
-        });
-        res.status(200).redirect('/');
+      io.on('connection', (socket) => {
+        if(temp){
+          socket.emit('done');
+        }
       });
+      res.status(200).redirect('/');
     });
   });
 });
+
 
 
 io.on('connection', (socket) => {
@@ -84,21 +81,24 @@ io.on('connection', (socket) => {
     add(name);
     n = name;
   });
-
   socket.on('disconnect', () => {
     rem(n);
   });
-
   socket.on('newMsg', (msg) => {
-    if(msg.image && (temp_address != undefined) ){
-      io.emit('msg', {from: msg.from, image: true, src: temp_address});
-      temp_address = undefined;
+    if(msg.image && temp != undefined){
+      io.emit('msg', {
+        from: msg.from,
+        image: true,
+        src: temp.src,
+        ext: temp.ext
+      });
+        temp = undefined;
     } else {
     io.emit('msg', msg);
   }
   });
   socket.on('newUser', (name) => {
-    socket.broadcast.emit('wel', name);
+      socket.broadcast.emit('wel', name);
   });
   socket.on('type', (name) => {
     socket.broadcast.emit('isTyping', name);
@@ -107,7 +107,6 @@ io.on('connection', (socket) => {
     socket.emit('online', online_people);
   },500);
 });
-
 
 server.listen(port, (err) => {
   if(err) return err;

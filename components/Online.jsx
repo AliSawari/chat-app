@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Styles from './Styles'
 var socket = io();
 
-export default class About extends Component{
+export default class Online extends Component{
   constructor(props){
     super(props);
     this.people = this.people.bind(this);

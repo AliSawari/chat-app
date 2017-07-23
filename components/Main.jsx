@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import About from './About';
+import Online from './Online';
 import Chat from './Chat';
 // import injectTapEventPlugin from 'react-tap-event-plugin';
 // import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -13,7 +13,7 @@ export default class Main extends Component{
       <div className="container">
         <h1>Chat Application</h1>
         <Chat/>
-        <About/>
+        <Online/>
       </div>
     );
   }

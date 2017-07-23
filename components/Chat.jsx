@@ -40,14 +40,15 @@ export default class Chat extends Component {
         this.setState({ status: 'Disconnected' });
       });
       socket.on('msg', (msg) => {
-        if(msg.image && (msg.src != undefined) ) {
+        if(msg.image && msg.src) {
           this.setState({
             messages: [
             ...this.state.messages,
             {
               from: msg.from,
               image: true,
-              src: msg.src
+              src: msg.src,
+              ext: msg.ext
             }
           ]
         });
@@ -173,6 +174,7 @@ isTyping(){
 }
 
 file(){
+  var {myName} = this.state;
   var fileForm = this.refs.fileForm;
   var fileInput = this.refs.fileInput;
   fileInput.click();
