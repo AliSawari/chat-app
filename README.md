@@ -1,5 +1,5 @@
 <p align="center" href="https://medoos-chat.herokuapp.com">
-<img height=400 width=400 title="Medoos Chat" src="https://medoos-chat.herokuapp.com/favicon.ico" alt="app-icon"/></p>
+<img height=200 width=200 title="Medoos Chat" src="https://medoos-chat.herokuapp.com/favicon.ico" alt="app-icon"/></p>
 
 
 # Chat App :speech_balloon: :sunglasses:
