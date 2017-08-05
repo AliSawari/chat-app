@@ -1,6 +1,6 @@
 {
   "name": "chat-app",
-  "version": "0.4.3",
+  "version": "0.4.5",
   "description": "a simple chat application",
   "main": "server/server.js",
   "scripts": {
@@ -12,12 +12,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/AliSawari/chat-app"
+    "url": "git+https://github.com/AliSawari/chat-app.git"
   },
-  "repository": {
-    "type": "npm",
-    "url": "https://npmjs.com/package/chat-app"
+  "bugs": {
+    "url": "https://github.com/AliSawari/chat-app/issues"
   },
+  "homepage": "https://github.com/AliSawari/chat-app#readme",
   "author": "Ali Sawari <ali.dragon.swr@gmail.com>",
   "license": "MIT",
   "dependencies": {
