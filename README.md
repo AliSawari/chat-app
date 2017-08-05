@@ -1,4 +1,9 @@
+<p align="center" href="https://medoos-chat.herokuapp.com">
+<img height=400 width=400 title="Medoos Chat" src="https://medoos-chat.herokuapp.com/favicon.ico" alt="app-icon" />
+</p>
 # Chat App :speech_balloon: :sunglasses:
+<a href='https://npmjs.com/package/chat-app'><img src='https://nodei.co/npm/chat-app.png' alt="npm stats" /></a><a href='https://coveralls.io/github/AliSawari/chat-app?branch=master'><img src='https://coveralls.io/repos/github/AliSawari/chat-app/badge.svg?branch=master' alt='Coverage Status'/></a><a href='https://david-dm.org/AliSawari/chat-app'><img src='https://david-dm.org/AliSawari/chat-app.svg' alt="Dependencies"/></a><a href='https://travis-ci.org/AliSawari/chat-app'><img src='https://travis-ci.org/AliSawari/chat-app.svg?branch=master' alt="build status"/></a>
+
 
 #### a simple React-Socket-Nodejs Chat room application  :stuck_out_tongue:
 
@@ -17,15 +22,15 @@ npm start
 #### and that might take more time to build. if you want to start without minfing
 #### try this :
 ```
-$ webpack
-$ node server/server.js
+webpack
+node server/server.js
 ```
 
 ### Warning : if you installed the app using npm you should navigate to the directory first:
 
 ```
-$ cd node_modules/chat-app
-$ npm start
+cd node_modules/chat-app
+npm start
 ```
 #### thanks for the 100 npm installs guys! :tada: :fireworks:
 #### The Design will be ready soon :ghost:
@@ -37,7 +42,7 @@ $ npm start
 #### synced with [this github repository](https://github.com/AliSawari/chat-app) :octocat:
 
 ## Reach Me
-* [Email](ali.dragon.swr@gmail.com)
+* Email : ali.dragon.swr@gmail.com
 * [Twitter](https://twitter.com/ali_sawari24)
 * [Facebook](https://www.facebook.com/ali.sawari.3726)
 * [Telegram](https://t.me/mrghost0)

@@ -45,7 +45,6 @@ app.get('/err', (req, res) => {
 });
 
 app.post('/file', (req, res) => {
-  let r;
   var form = new formidable.IncomingForm();
   form.parse(req, (err, fields, files) => {
     if(err) return res.status(400).send(err);
