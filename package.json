@@ -1,6 +1,6 @@
 {
   "name": "chat-app",
-  "version": "0.4.5",
+  "version": "0.5.0",
   "description": "a simple chat application",
   "main": "server/server.js",
   "scripts": {
