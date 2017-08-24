@@ -4,9 +4,13 @@
 
 # Chat App :speech_balloon: :sunglasses:
 <a href='https://npmjs.com/package/chat-app'>
-<img src='https://nodei.co/npm/chat-app.png' alt="npm stats" />
+<img src='https://img.shields.io/npm/v/chat-app.svg' alt="npm version" />
 </a>
-<hr/>
+
+<a href='https://npmjs.com/package/chat-app'>
+<img src='https://img.shields.io/npm/dm/chat-app.svg' alt="npm stats" />
+</a>
+
 <a href='https://coveralls.io/github/AliSawari/chat-app?branch=master'>
 <img src='https://coveralls.io/repos/github/AliSawari/chat-app/badge.svg?branch=master' alt='Coverage Status'/>
 </a>
