@@ -12,12 +12,13 @@ const formidable = require('formidable');
 app.use(express.static(public));
 var temp = undefined;
 var online_people = [];
-
+// isThere function to iterate through arrays
 function isThere(name){
   let s;
   for(let x in online_people){
     if(online_people[x] === name){
-      return s = [x];
+      s = [x];
+      return s;
     } else {
       s = false;
     }

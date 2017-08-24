@@ -10,6 +10,7 @@
 <a href='https://coveralls.io/github/AliSawari/chat-app?branch=master'>
 <img src='https://coveralls.io/repos/github/AliSawari/chat-app/badge.svg?branch=master' alt='Coverage Status'/></a>
 
+<a href="https://snyk.io/test/github/alisawari/chat-app"><img src="https://snyk.io/test/github/alisawari/chat-app/badge.svg" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/alisawari/chat-app"></a>
 
 <a href='https://david-dm.org/AliSawari/chat-app'>
 <img src='https://david-dm.org/AliSawari/chat-app.svg' alt="Dependencies"/></a>
