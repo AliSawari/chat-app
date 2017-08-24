@@ -3,21 +3,25 @@
 
 
 # Chat App :speech_balloon: :sunglasses:
-
-<a href='https://npmjs.com/package/chat-app'><img src='https://nodei.co/npm/chat-app.png' alt="npm stats" /></a>
-
-
+<a href='https://npmjs.com/package/chat-app'>
+<img src='https://nodei.co/npm/chat-app.png' alt="npm stats" />
+</a>
+<hr/>
 <a href='https://coveralls.io/github/AliSawari/chat-app?branch=master'>
-<img src='https://coveralls.io/repos/github/AliSawari/chat-app/badge.svg?branch=master' alt='Coverage Status'/></a>
+<img src='https://coveralls.io/repos/github/AliSawari/chat-app/badge.svg?branch=master' alt='Coverage Status'/>
+</a>
 
-<a href="https://snyk.io/test/github/alisawari/chat-app"><img src="https://snyk.io/test/github/alisawari/chat-app/badge.svg" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/alisawari/chat-app"></a>
+<a href="https://snyk.io/test/github/alisawari/chat-app">
+<img src="https://snyk.io/test/github/alisawari/chat-app/badge.svg" alt="Known Vulnerabilities"/>
+</a>
 
 <a href='https://david-dm.org/AliSawari/chat-app'>
-<img src='https://david-dm.org/AliSawari/chat-app.svg' alt="Dependencies"/></a>
-
+<img src='https://david-dm.org/AliSawari/chat-app.svg' alt="Dependencies"/>
+</a>
 
 <a href='https://travis-ci.org/AliSawari/chat-app'>
-<img src='https://travis-ci.org/AliSawari/chat-app.svg?branch=master' alt="build status"/></a>
+<img src='https://travis-ci.org/AliSawari/chat-app.svg?branch=master' alt="build status"/>
+</a>
 
 
 #### a simple React-Socket-Nodejs Chat room application  :stuck_out_tongue:
@@ -28,7 +32,7 @@
 * [Webpack](https://webpack.js.org)
 
 ## Usage
-```
+```shell
 npm install
 npm start
 ```
@@ -36,20 +40,19 @@ npm start
 #### Warning : ```npm start``` uses webpack -p which minifies the bundle file
 #### and that might take more time to build. if you want to start without minfing
 #### try this :
-```
+```shell
 webpack
 node server/server.js
 ```
 
 ### Warning : if you installed the app using npm you should navigate to the directory first:
 
-```
+```shell
 cd node_modules/chat-app
 npm start
 ```
-#### thanks for the 100 npm installs guys! :tada: :fireworks:
+#### thanks for the 200 npm installs guys! :tada: :fireworks:
 #### The Design will be ready soon :ghost:
-#### I will design it properly soon later! :smiley:
 
 
 ## Live Demo
@@ -65,7 +68,7 @@ npm start
 ## License
 ### MIT
 @ Copyright 2017 Medoos Chat
-
+<hr/>
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
