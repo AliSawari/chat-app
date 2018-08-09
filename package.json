@@ -32,7 +32,7 @@
     "formidable": "^1.1.1",
     "mongoose": "^4.11.3",
     "react": "^15.5.4",
-    "react-dom": "15.6.1",
+    "react-dom": "16.0.1",
     "react-router-dom": "^4.1.1",
     "socket.io": "^2.0.1",
     "webpack": "^2.6.1",
