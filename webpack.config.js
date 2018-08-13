@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 module.exports = {
   entry: "./components/App.jsx",
   output: {
