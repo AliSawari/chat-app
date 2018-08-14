@@ -3,65 +3,21 @@
 
 
 # Chat App :speech_balloon: :sunglasses:
-<a href='https://npmjs.com/package/chat-app'>
-<img src='https://img.shields.io/npm/v/chat-app.svg' alt="npm version" />
-</a>
 
-<a href='https://npmjs.com/package/chat-app'>
-<img src='https://img.shields.io/npm/dm/chat-app.svg' alt="npm stats" />
-</a>
-
-<a href='https://coveralls.io/github/AliSawari/chat-app?branch=master'>
-<img src='https://coveralls.io/repos/github/AliSawari/chat-app/badge.svg?branch=master' alt='Coverage Status'/>
-</a>
-
-<a href="https://snyk.io/test/github/alisawari/chat-app">
-<img src="https://snyk.io/test/github/alisawari/chat-app/badge.svg" alt="Known Vulnerabilities"/>
+<a href='https://travis-ci.org/AliSawari/chat-app'>
+<img src='https://travis-ci.org/AliSawari/chat-app.svg?branch=master' alt="build status"/>
 </a>
 
 <a href='https://david-dm.org/AliSawari/chat-app'>
 <img src='https://david-dm.org/AliSawari/chat-app.svg' alt="Dependencies"/>
 </a>
 
-<a href='https://travis-ci.org/AliSawari/chat-app'>
-<img src='https://travis-ci.org/AliSawari/chat-app.svg?branch=master' alt="build status"/>
-</a>
-
-
-#### a simple React-Socket-Nodejs Chat room application  :stuck_out_tongue:
-
-## Requirements
-
-* [Nodejs](https://nodejs.org)
-* [Webpack](https://webpack.js.org)
-
-## Usage
-```shell
-npm install
-npm start
-```
-
-#### Warning : ```npm start``` uses webpack -p which minifies the bundle file
-#### and that might take more time to build. if you want to start without minfing
-#### try this :
-```shell
-webpack
-node server/server.js
-```
-
-### Warning : if you installed the app using npm you should navigate to the directory first:
-
-```shell
-cd node_modules/chat-app
-npm start
-```
-#### thanks for the 200 npm installs guys! :tada: :fireworks:
-#### The Design will be ready soon :ghost:
+<b>a simple React-Socket-Nodejs Chat room application  :stuck_out_tongue:</b>
 
 
 ## Live Demo
-### [Medoos-Chat](https://medoos-chat.herokuapp.com/)
-#### synced with [this github repository](https://github.com/AliSawari/chat-app) :octocat:
+[Medoos-Chat](https://medoos-chat.herokuapp.com/)
+synced with [this github repository](https://github.com/AliSawari/chat-app) :octocat:
 
 ## Reach Me
 * Email : ali.dragon.swr@gmail.com
