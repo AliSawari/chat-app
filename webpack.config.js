@@ -1,17 +1,17 @@
 module.exports = {
-  entry: "./components/App.jsx",
+  entry: './components/App.jsx',
   output: {
     path: __dirname,
-    filename: "./public/bundle.js"
+    filename: "./public/js/bundle.js"
   },
   resolve: {
     extensions:[".js",".jsx"]
   },
   module: {
-    loaders: [
+    rules: [
       {
-        use : "babel-loader",
-        exclude: /(node_modules)/
+       exclude: /(node_modules)/,
+       use: ['babel-loader']
       }
     ]
   }
