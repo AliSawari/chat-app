@@ -4,14 +4,21 @@ const port = process.env.PORT || 3000;
 const socketIO = require('socket.io');
 const http = require('http');
 const fs = require('fs');
+const path = require('path');
+const formidable = require('formidable');
+const public = path.join(__dirname,'../public');
+
+// static dir
+app.use(express.static(public));
+
 const server = http.createServer(app);
 const io = socketIO(server);
-const path = require('path');
-const public = path.join(__dirname,'../public');
-const formidable = require('formidable');
-app.use(express.static(public));
 var temp = undefined;
 var online_people = [];
+
+
+
+
 // isThere function to iterate through arrays
 function isThere(name){
   let s;
