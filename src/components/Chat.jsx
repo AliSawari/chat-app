@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
+
 import Message from './Message';
 import Styles from './Styles';
-var socket = io();
-// import {RaisedButton, AppBar, FloatingActionButton } from 'material-ui';
+
+const socket = io();
+
 function set(a, b) {
   localStorage.setItem(a, b);
 }

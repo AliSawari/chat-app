@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
-import Styles from './Styles'
-var socket = io();
+
+import Styles from './Styles';
+
+const socket = io();
 
 export default class Online extends Component{
   constructor(props){
@@ -24,12 +26,9 @@ export default class Online extends Component{
       });
   }
   render(){
-    var {online_people} = this.state;
-    return (
-      <div className="well">
-        <h3 style={Styles.p2()}>Online People</h3>
-        {this.people()}
-      </div>
-    );
+    return <div className="well">
+    <h3 style={Styles.p2()}>Online People</h3>
+    {this.people()}
+    </div>
   }
 }
