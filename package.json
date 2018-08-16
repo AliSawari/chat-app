@@ -4,9 +4,12 @@
   "description": "a simple chat application",
   "main": "server/server.js",
   "scripts": {
+    "tsc": "tsc",
     "dev": "webpack -w --config config/dev.js",
+    "dev-server": "tsc --watch",
     "pro": "webpack --config config/pro.js",
-    "start": "npm run pro && node .",
+    "build": "npm run pro && tsc",
+    "start": "npm run build && node .",
     "test": "jest",
     "test-w": "jest --watchAll"
   },
@@ -27,8 +30,14 @@
     "webpack-cli": "^3.1.0"
   },
   "devDependencies": {
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.7.1",
     "babel-jest": "^23.4.2",
+    "html-webpack-plugin": "^3.2.0",
     "jest": "^23.5.0",
-    "react-test-renderer": "^16.4.2"
+    "react-test-renderer": "^16.4.2",
+    "supertest": "^3.1.0",
+    "typescript": "^3.0.1",
+    "webpack-clean-plugin": "^0.2.3"
   }
 }

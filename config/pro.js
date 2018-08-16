@@ -6,7 +6,7 @@ module.exports = {
     filename: 'bundle.js'
   },
   resolve: {
-    extensions:[".js",".jsx",".tsx"]
+    extensions:[".js",".jsx"]
   },
   module: {
     rules: [
@@ -15,5 +15,8 @@ module.exports = {
        use: ['babel-loader']
       }
     ]
+  },
+  optimization: {
+    nodeEnv: 'production'
   }
 }
