@@ -4,7 +4,7 @@
 
 # Chat App :speech_balloon:
 
-[![Build Status](https://travis-ci.org/AliSawari/chat-app.svg?branch=master)](https://travis-ci.org/AliSawari/chat-app)
+[![Build Status](https://travis-ci.org/AliSawari/chat-app.svg?branch=dev)](https://travis-ci.org/AliSawari/chat-app)
 [![dependencies Status](https://david-dm.org/AliSawari/chat-app/status.svg)](https://david-dm.org/AliSawari/chat-app)
 [![devDependencies Status](https://david-dm.org/AliSawari/chat-app/dev-status.svg)](https://david-dm.org/AliSawari/chat-app?type=dev)
 
