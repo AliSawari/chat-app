@@ -1,11 +1,12 @@
 module.exports = {
-  entry: './src/components/App.jsx',
+  mode: 'production',
+  entry: '../src/components/Main.jsx',
   output: {
-    path: __dirname,
-    filename: "./public/js/bundle.js"
+    path: '../public/js',
+    filename: 'bundle.js'
   },
   resolve: {
-    extensions:[".js",".jsx"]
+    extensions:[".js",".jsx",".tsx"]
   },
   module: {
     rules: [
