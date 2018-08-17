@@ -1,15 +1,18 @@
-const request = require('supertest');
-const express = require('express');
+const express = require('express')
+const request = require('supertest')
 const app = express();
 
-app.use(express.static(`${__dirname}/../public`))
- 
+import * as Routes from '../src/server/routes'
+
+app.use('/', Routes.home)
+app.use('/login', Routes.login)
+
 describe('GET /', () => {
   it('should respond with 200', () => {
     request(app)
     .get('/')
     .expect(200)
-    .end((err) => {
+    .end(err => {
       if (err) throw err
     });
   });

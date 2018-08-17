@@ -1,4 +1,4 @@
 node_modules/
-public/js/*.js
+public/js/
 public/index.html
-server/*.js
+server/
