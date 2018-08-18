@@ -2,10 +2,11 @@ const express = require('express')
 const request = require('supertest')
 const app = express();
 
-import * as Routes from '../src/server/routes'
+import homeRouter from './../server/routes/home'
+import loginRouter from './../server/routes/login'
 
-app.use('/', Routes.home)
-app.use('/login', Routes.login)
+app.use('/', homeRouter)
+app.use('/login', loginRouter)
 
 describe('GET /', () => {
   it('should respond with 200', () => {

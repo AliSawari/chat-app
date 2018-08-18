@@ -10,7 +10,7 @@
     "pro": "webpack --config config/pro.js",
     "build": "npm run pro && tsc",
     "start": "npm run build && node .",
-    "test": "jest",
+    "test": "tsc && jest",
     "test-w": "jest --watchAll"
   },
   "author": "Ali Sawari <ali.dragon.swr@gmail.com>",
