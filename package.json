@@ -4,14 +4,14 @@
   "description": "a simple chat application",
   "main": "server/server.js",
   "scripts": {
-    "tsc": "tsc",
     "dev": "webpack -w --config config/dev.js",
-    "dev-server": "tsc --watch",
-    "pro": "webpack --config config/pro.js",
-    "build": "npm run pro && tsc",
-    "start": "npm run build && node .",
+    "dev2": "tsc --watch",
+
     "test": "tsc && jest",
-    "test-w": "jest --watchAll"
+    "test-w": "jest --watchAll",
+
+    "pro": "webpack --config config/pro.js && tsc",
+    "start": "yarn pro && node ."
   },
   "author": "Ali Sawari <ali.dragon.swr@gmail.com>",
   "license": "MIT",
@@ -38,6 +38,7 @@
     "jest": "^23.5.0",
     "react-test-renderer": "^16.4.2",
     "supertest": "^3.1.0",
+    "ts-loader": "^4.5.0",
     "typescript": "^3.0.1",
     "webpack-clean-plugin": "^0.2.3"
   }

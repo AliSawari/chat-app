@@ -19,3 +19,5 @@ server.listen(port, (err) => {
   if(err) return console.log(err)
   console.log(`Server is up and running on port ${port}`)
 })
+
+export {app}

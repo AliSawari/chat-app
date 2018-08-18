@@ -1,4 +1,5 @@
 node_modules/
 public/js/
 public/index.html
+public/login.html
 server/
